@@ -14,7 +14,7 @@ env:
   REGION: westeurope
 
   SVC_DOCKER: src/BeneficiaryNameValidationSvc/Dockerfile
-  SVC_IMAGE: BeneficiaryNameValidationSvc
+  SVC_IMAGE: beneficiarynamevalidationsvc
 
 jobs:
   provision:
