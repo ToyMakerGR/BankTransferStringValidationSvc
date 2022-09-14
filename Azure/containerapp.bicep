@@ -36,6 +36,12 @@ resource containerApp 'Microsoft.App/containerApps@2022-03-01' = {
   properties: {
     managedEnvironmentId: environmentId
     configuration: {
+      dapr:{
+        enabled: true
+        appId: name
+        appPort: targetPort
+        appProtocol: 'http'
+      }
       secrets:[
         {
           name: 'container-registry-password'
@@ -50,6 +56,12 @@ resource containerApp 'Microsoft.App/containerApps@2022-03-01' = {
         }
       ]
       activeRevisionsMode: 'Single'
+      ingress:{
+        external: externalIngress
+        targetPort: targetPort
+        allowInsecure: allowInsecure
+        transport: transport
+      }
     }
     template:{
       containers:[
