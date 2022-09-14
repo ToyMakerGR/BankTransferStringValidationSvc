@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "OwUQT+dt1gaWTsCKKoC0y48zje8gD5QK77WP5tt6H7A=",
+  "Source": "BeneficiaryNameValidationSvc",
+  "BasePath": "_content/BeneficiaryNameValidationSvc",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
