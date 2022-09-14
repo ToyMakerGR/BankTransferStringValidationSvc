@@ -7,7 +7,7 @@ param location string
 param environmentId string
 
 // Container image ref
-param containerImage string = 'mcr.microsoft.com/mcr/hello-world:v1.0'
+param containerImage string = 'mcr.microsoft.com/mcr/hello-world:latest'
 
 // Environment variables
 param envVars array = []
