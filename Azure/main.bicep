@@ -61,7 +61,6 @@ module BeneficiaryNameValidationSvc 'containerapp.bicep' = {
     AcrUsername: acr.listCredentials().username
     AcrPassword: acr.listCredentials().passwords[0].value
     externalIngress: true
-    transport: 'https'
     envVars: sharedConfig
   }
 }
