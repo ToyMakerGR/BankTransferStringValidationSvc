@@ -51,10 +51,10 @@ var sharedConfig = [
 ]
 
 // Create the service container app
-module BeneficiaryNameValidationSvc 'containerapp.bicep' = {
-  name: 'BeneficiaryNameValidationSvc'
+module beneficiarynamevalidationsvc 'containerapp.bicep' = {
+  name: 'beneficiarynamevalidationsvc'
   params: {
-    name: 'BeneficiaryNameValidationSvc'
+    name: 'beneficiarynamevalidationsvc'
     location: location
     environmentId: env.name
     AcrName: acr.name
@@ -62,6 +62,6 @@ module BeneficiaryNameValidationSvc 'containerapp.bicep' = {
     AcrPassword: acr.listCredentials().passwords[0].value
     externalIngress: true
     transport: 'https'
-    //envVars: sharedConfig
+    envVars: sharedConfig
   }
 }

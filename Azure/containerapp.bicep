@@ -30,7 +30,7 @@ param allowInsecure bool = false
 
 var loweredName = toLower(name)
 
-resource containerApp 'Microsoft.App/containerApps@2022-03-01' = {
+resource containerapp 'Microsoft.App/containerApps@2022-03-01' = {
   name: loweredName
   location: location
   properties: {
