@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\BeneficiaryNameValidationSvc.csproj": {}
+    "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\src\\BeneficiaryNameValidationSvc\\BeneficiaryNameValidationSvc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\BeneficiaryNameValidationSvc.csproj": {
+    "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\src\\BeneficiaryNameValidationSvc\\BeneficiaryNameValidationSvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\BeneficiaryNameValidationSvc.csproj",
+        "projectUniqueName": "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\src\\BeneficiaryNameValidationSvc\\BeneficiaryNameValidationSvc.csproj",
         "projectName": "BeneficiaryNameValidationSvc",
-        "projectPath": "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\BeneficiaryNameValidationSvc.csproj",
+        "projectPath": "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\src\\BeneficiaryNameValidationSvc\\BeneficiaryNameValidationSvc.csproj",
         "packagesPath": "C:\\Users\\ggkio\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\obj\\",
+        "outputPath": "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\src\\BeneficiaryNameValidationSvc\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ggkio\\AppData\\Roaming\\NuGet\\NuGet.Config",

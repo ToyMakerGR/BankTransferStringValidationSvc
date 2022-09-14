@@ -33,7 +33,7 @@
             "request": "launch",
             "preLaunchTask": "docker-run: debug",
             "netCore": {
-                "appProject": "${workspaceFolder}/BeneficiaryNameValidationSvc.csproj"
+                "appProject": "${workspaceFolder}/src/BeneficiaryNameValidationSvc/BeneficiaryNameValidationSvc.csproj"
             },
             "dockerServerReadyAction": {
                 "uriFormat": "%s://localhost:%s/swagger"

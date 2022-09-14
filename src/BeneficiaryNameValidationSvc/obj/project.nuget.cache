@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yF2NsH3LM6g9IqkemW3zW7MNSS2e9IpZWs1GCFySQv2X+wg8FGwJUFoVK3exsl6ih9fFenXZppLfHobbOxm/nw==",
+  "dgSpecHash": "GncO9EPqAxKRZUvAqO3Fs6OQCGr7zJw/isc4d3jAINR6f9WJhci7pbBFicWORVpmgrVoGsHAp/5GCWl//wsVlw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\BeneficiaryNameValidationSvc.csproj",
+  "projectFilePath": "C:\\Users\\ggkio\\Documents\\source\\ACA\\BeneficiaryNameValidationSvc\\src\\BeneficiaryNameValidationSvc\\BeneficiaryNameValidationSvc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ggkio\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\ggkio\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
