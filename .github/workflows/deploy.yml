@@ -68,16 +68,17 @@ jobs:
       run: |
         set -euo pipefail
 
-        echo "Fetching access token"
-        access_token=$(az account get-access-token --query accessToken -o tsv)
-        echo "Access token: $access_token"
+        # echo "Fetching access token"
+        # access_token=$(az account get-access-token --query accessToken -o tsv)
+        # echo "Access token: $access_token"
 
-        echo "Fetching refresh token (curl https://${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/oauth2/exchange -v -d grant_type=access_token&service=${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io&access_token=$access_token | jq -r .refresh_token)"
-        refresh_token=$(curl https://${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/oauth2/exchange -v -d "grant_type=access_token&service=${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io&access_token=$access_token" | jq -r .refresh_token)
-        echo "Refresh token: $refresh_token"
+        # echo "Fetching refresh token (curl https://${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/oauth2/exchange -v -d grant_type=access_token&service=${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io&access_token=$access_token | jq -r .refresh_token)"
+        # refresh_token=$(curl https://${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/oauth2/exchange -v -d "grant_type=access_token&service=${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io&access_token=$access_token" | jq -r .refresh_token)
+        # echo "Refresh token: $refresh_token"
 
-        echo "Executing 'docker login -u 00000000-0000-0000-0000-000000000000 --password-stdin ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io <<< $refresh_token'"
-        docker login -u 00000000-0000-0000-0000-000000000000 --password-stdin ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io <<< "$refresh_token"
+        # echo "Executing 'docker login -u 00000000-0000-0000-0000-000000000000 --password-stdin ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io <<< $refresh_token'"
+        # docker login -u 00000000-0000-0000-0000-000000000000 --password-stdin ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io <<< "$refresh_token"
+        docker login ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io --username b8dcefaf-fdc1-4e74-b16d-51bc56b408f5 --password 2Fx8Q~avqrvP5xRm_l8hZEdGUSTyxeOg3LCB.a~X
 
     - name: Build the api image and push it to ACR
       uses: docker/build-push-action@v2
