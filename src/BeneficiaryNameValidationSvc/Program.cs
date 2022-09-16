@@ -1,4 +1,7 @@
+using System.Reflection;
 using Defender.MarkII.BeneficiaryNameValidationSvc.Infrastructure;
+using Defender.MarkII.BeneficiaryNameValidationSvc.Model;
+using Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
 using Microsoft.ApplicationInsights.Extensibility;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +13,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationInsightsTelemetry();
+
 builder.Services.AddSingleton<ITelemetryInitializer, ApplicationMapNodeNameInitializer>();
+builder.Services.RegisterAllTypes<IStringValidationSvc>(new[] { Assembly.GetExecutingAssembly() }, ServiceLifetime.Scoped);
+builder.Services.AddScoped<IValidationSvc, ValidationSvc>();
 
 var app = builder.Build();
 
@@ -21,7 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
+app.RegisterValidationEndpoint();
 
 app.UseAuthorization();
 

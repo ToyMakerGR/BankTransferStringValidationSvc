@@ -1,11 +1,12 @@
 namespace Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
 
+using Defender.MarkII.BeneficiaryNameValidationSvc.Constants;
 using Defender.MarkII.BeneficiaryNameValidationSvc.Model;
 
 /// <summary>
 /// Blueprint for all validation strategies
 /// </summary>
-public interface INameValidationSvc
+public interface IStringValidationSvc
 {
     /// <summary>
     /// The <see cref="ValidationResult"> when validation has been performed.
@@ -13,9 +14,14 @@ public interface INameValidationSvc
     EvaluationResult? Result { get; }
 
     /// <summary>
-    /// Performs validation against the provided name.
+    /// Scopes which this validation service instance is valid for.
     /// </summary>
-    /// <param name="Name">The name to validate</param>
+    IEnumerable<ValidationScope> Scopes { get; }
+
+    /// <summary>
+    /// Performs validation against the provided string.
+    /// </summary>
+    /// <param name="stringOfInterest">The string to validate</param>
     /// <returns>An empty task.</returns>
-    Task Validate(string Name);
+    Task Validate(string stringOfInterest);
 }

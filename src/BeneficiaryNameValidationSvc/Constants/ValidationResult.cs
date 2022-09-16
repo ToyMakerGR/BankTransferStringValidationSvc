@@ -18,13 +18,17 @@ public enum ValidationResult
     /// </summary>
     ConsecutiveCharacters = 2,
     /// <summary>
+    /// Repeated characters encountered
+    /// </summary>
+    RepeatedCharacters = 3,
+    /// <summary>
     /// Predefined suspicious words encountered
     /// </summary>
-    PredefinedSuspiciousWords = 3,
+    PredefinedSuspiciousWords = 4,
     /// <summary>
     /// Suspicious names encountered
     /// </summary>
-    SuspiciousNamesList = 4,
+    SuspiciousNamesList = 5,
     /// <summary>
     /// Okey-dokey
     /// </summary>

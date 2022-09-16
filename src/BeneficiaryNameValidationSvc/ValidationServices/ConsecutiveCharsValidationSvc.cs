@@ -1,36 +1,40 @@
 namespace Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
 
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Defender.MarkII.BeneficiaryNameValidationSvc.Constants;
 using Defender.MarkII.BeneficiaryNameValidationSvc.Model;
 
 /// <summary>
-/// <see cref="INameValidationSvc"> implementation - consecutive characters
+/// <see cref="IStringValidationSvc"> implementation - consecutive characters
 /// </summary>
-public class ConsecutiveCharsValidationSvc : INameValidationSvc
+public class ConsecutiveCharsValidationSvc : IStringValidationSvc
 {
-    const string alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const string enAlphabet = "abcdefghijklmnopqrstuvwxyz";
+    const string grAlphabet = "αβγδεζηθικλμνξοπρστυφχψω";
     const string numbers = "01234567890";
 
-    #region INameValidationSvc members
+    #region IStringValidationSvc members
 
     public EvaluationResult? Result { get; private set; }
 
-    public async Task Validate(string Name)
+    public IEnumerable<ValidationScope> Scopes => new[] { ValidationScope.BeneficiaryName };
+
+    public async Task Validate(string stringOfInterest)
     {
         Result = new EvaluationResult();
-        if (Name.Length < 3)
+        if (stringOfInterest.Length < 3)
         {
             await Task.CompletedTask;
             return;
         }
 
-        for (var i = Name.Length; i >= 3; i--)
+        for (var i = stringOfInterest.Length; i >= 3; i--)
         {
-            for (var z = 0; z <= Name.Length - i; z++)
+            for (var z = 0; z <= stringOfInterest.Length - i; z++)
             {
-                var s = Name.Substring(z, i).ToLower();
-                if (IsConsecutive(Name.Substring(z, i)))
+                var s = stringOfInterest.Substring(z, i).ToLower();
+                if (IsConsecutive(stringOfInterest.Substring(z, i)))
                 {
                     Result.Result = ValidationResult.ConsecutiveCharacters;
                     Result.Action = i > 4 ? ValidationAction.Block : ValidationAction.Warning;
@@ -44,6 +48,7 @@ public class ConsecutiveCharsValidationSvc : INameValidationSvc
     #endregion
 
     bool IsConsecutive(string s) =>
-        alphabet.Contains(s, StringComparison.InvariantCultureIgnoreCase) ||
+        enAlphabet.Contains(s, StringComparison.InvariantCultureIgnoreCase) ||
+        grAlphabet.Contains(s, StringComparison.InvariantCultureIgnoreCase) ||
         numbers.Contains(s, StringComparison.InvariantCultureIgnoreCase);
 }
