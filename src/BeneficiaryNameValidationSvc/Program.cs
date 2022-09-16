@@ -1,6 +1,6 @@
 using System.Reflection;
 using Defender.MarkII.BeneficiaryNameValidationSvc.Infrastructure;
-using Defender.MarkII.BeneficiaryNameValidationSvc.Model;
+using Defender.MarkII.BeneficiaryNameValidationSvc.Services;
 using Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
 using Microsoft.ApplicationInsights.Extensibility;
 

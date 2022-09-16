@@ -1,4 +1,4 @@
-namespace Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
+namespace Defender.MarkII.BeneficiaryNameValidationSvc.Services;
 
 using Defender.MarkII.BeneficiaryNameValidationSvc.Constants;
 using Defender.MarkII.BeneficiaryNameValidationSvc.Model;

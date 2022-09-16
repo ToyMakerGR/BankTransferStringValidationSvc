@@ -1,9 +1,11 @@
 namespace Defender.MarkII.BeneficiaryNameValidationSvc.Infrastructure;
 
+using System.Globalization;
 using System.Reflection;
+using System.Text;
 using Defender.MarkII.BeneficiaryNameValidationSvc.Constants;
 using Defender.MarkII.BeneficiaryNameValidationSvc.Model;
-using Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
+using Defender.MarkII.BeneficiaryNameValidationSvc.Services;
 
 public static class Extensions
 {
@@ -24,5 +26,22 @@ public static class Extensions
         })
         .Produces<EvaluationResult>(StatusCodes.Status200OK)
         .WithName("ValidateBankTransferString");
+    }
+
+    public static string RemoveDiacritics(this string text)
+    {
+        var normalizedString = text.Normalize(NormalizationForm.FormD);
+        var stringBuilder = new StringBuilder();
+
+        foreach (var c in normalizedString)
+        {
+            var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+            if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+            {
+                stringBuilder.Append(c);
+            }
+        }
+
+        return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
     }
 }

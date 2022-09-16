@@ -1,7 +1,9 @@
-namespace Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
+namespace Defender.MarkII.BeneficiaryNameValidationSvc.Services;
 
 using Defender.MarkII.BeneficiaryNameValidationSvc.Constants;
+using Defender.MarkII.BeneficiaryNameValidationSvc.Infrastructure;
 using Defender.MarkII.BeneficiaryNameValidationSvc.Model;
+using Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
 
 public class ValidationSvc : IValidationSvc
 {
@@ -26,7 +28,7 @@ public class ValidationSvc : IValidationSvc
             stringOfInterest = string.Empty;
         }
 
-        var s = stringOfInterest.ToLower().Trim();
+        var s = stringOfInterest.ToLower().Trim().RemoveDiacritics();
         foreach (var validationSvc in _validationServices.Where(v => v.Scopes.Contains(scope)))
         {
             await validationSvc.Validate(s);
