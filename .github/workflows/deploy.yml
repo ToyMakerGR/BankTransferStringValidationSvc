@@ -104,9 +104,9 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: >
-            az containerapp registry set -n BankTransferStringValidationSvc -g ${{ env.RESOURCE_GROUP_NAME }} --server ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io
+            az containerapp registry set -n ${{ env.SVC_IMAGE }} -g ${{ env.RESOURCE_GROUP_NAME }} --server ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io
 
-            az containerapp update -n BankTransferStringValidationSvc -g ${{ env.RESOURCE_GROUP_NAME }} -i ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/${{ env.SVC_IMAGE }}:${{ github.sha }}
+            az containerapp update -n ${{ env.SVC_IMAGE }} -g ${{ env.RESOURCE_GROUP_NAME }} -i ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/${{ env.SVC_IMAGE }}:${{ github.sha }}
 
       - name: logout
         run: >
