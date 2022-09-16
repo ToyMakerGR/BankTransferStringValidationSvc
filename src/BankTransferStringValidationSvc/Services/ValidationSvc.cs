@@ -1,9 +1,9 @@
-namespace Defender.MarkII.BeneficiaryNameValidationSvc.Services;
+namespace Defender.MarkII.BankTransferStringValidationSvc.Services;
 
-using Defender.MarkII.BeneficiaryNameValidationSvc.Constants;
-using Defender.MarkII.BeneficiaryNameValidationSvc.Infrastructure;
-using Defender.MarkII.BeneficiaryNameValidationSvc.Model;
-using Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
+using Defender.MarkII.BankTransferStringValidationSvc.Constants;
+using Defender.MarkII.BankTransferStringValidationSvc.Infrastructure;
+using Defender.MarkII.BankTransferStringValidationSvc.Model;
+using Defender.MarkII.BankTransferStringValidationSvc.ValidationServices;
 
 public class ValidationSvc : IValidationSvc
 {

@@ -1,7 +1,7 @@
-namespace Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
+namespace Defender.MarkII.BankTransferStringValidationSvc.ValidationServices;
 
-using Defender.MarkII.BeneficiaryNameValidationSvc.Constants;
-using Defender.MarkII.BeneficiaryNameValidationSvc.Model;
+using Defender.MarkII.BankTransferStringValidationSvc.Constants;
+using Defender.MarkII.BankTransferStringValidationSvc.Model;
 
 /// <summary>
 /// Blueprint for all validation strategies

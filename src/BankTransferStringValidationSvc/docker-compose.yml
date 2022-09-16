@@ -3,14 +3,10 @@
 version: '3.4'
 
 services:
-  beneficiarynamevalidationsvc:
-    image: beneficiarynamevalidationsvc
+  BankTransferStringValidationSvc:
+    image: BankTransferStringValidationSvc
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
       - 5149:5149
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    volumes:
-      - ~/.vsdbg:/remote_debugger:rw

@@ -1,6 +1,6 @@
-namespace Defender.MarkII.BeneficiaryNameValidationSvc.Model;
+namespace Defender.MarkII.BankTransferStringValidationSvc.Model;
 
-using Defender.MarkII.BeneficiaryNameValidationSvc.Constants;
+using Defender.MarkII.BankTransferStringValidationSvc.Constants;
 
 /// <summary>
 /// The result of a validation

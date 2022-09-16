@@ -1,4 +1,4 @@
-namespace Defender.MarkII.BeneficiaryNameValidationSvc.Constants;
+namespace Defender.MarkII.BankTransferStringValidationSvc.Constants;
 
 /// <summary>
 /// Describes the action that must be taken after a validation

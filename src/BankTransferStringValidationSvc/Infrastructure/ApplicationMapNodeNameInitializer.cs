@@ -1,4 +1,4 @@
-﻿namespace Defender.MarkII.BeneficiaryNameValidationSvc.Infrastructure;
+﻿namespace Defender.MarkII.BankTransferStringValidationSvc.Infrastructure;
 
 using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.Extensibility;
@@ -12,7 +12,7 @@ public class ApplicationMapNodeNameInitializer : ITelemetryInitializer
     }
 
     public string Name { get; set; }
-    
+
     public void Initialize(ITelemetry telemetry)
     {
         telemetry.Context.Cloud.RoleName = Name;

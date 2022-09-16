@@ -51,10 +51,10 @@ var sharedConfig = [
 ]
 
 // Create the service container app
-module BeneficiaryNameValidationSvc 'containerapp.bicep' = {
-  name: 'BeneficiaryNameValidationSvc'
+module BankTransferStringValidationSvc 'containerapp.bicep' = {
+  name: 'BankTransferStringValidationSvc'
   params: {
-    name: 'BeneficiaryNameValidationSvc'
+    name: 'BankTransferStringValidationSvc'
     location: location
     environmentId: env.outputs.envId
     AcrName: acr.name

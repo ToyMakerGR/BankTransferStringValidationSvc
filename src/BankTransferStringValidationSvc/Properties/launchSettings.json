@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "BeneficiaryNameValidationSvc": {
+    "BankTransferStringValidationSvc": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

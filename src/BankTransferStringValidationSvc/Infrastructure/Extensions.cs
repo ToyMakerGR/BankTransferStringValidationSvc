@@ -1,11 +1,11 @@
-namespace Defender.MarkII.BeneficiaryNameValidationSvc.Infrastructure;
+namespace Defender.MarkII.BankTransferStringValidationSvc.Infrastructure;
 
 using System.Globalization;
 using System.Reflection;
 using System.Text;
-using Defender.MarkII.BeneficiaryNameValidationSvc.Constants;
-using Defender.MarkII.BeneficiaryNameValidationSvc.Model;
-using Defender.MarkII.BeneficiaryNameValidationSvc.Services;
+using Defender.MarkII.BankTransferStringValidationSvc.Constants;
+using Defender.MarkII.BankTransferStringValidationSvc.Model;
+using Defender.MarkII.BankTransferStringValidationSvc.Services;
 
 public static class Extensions
 {

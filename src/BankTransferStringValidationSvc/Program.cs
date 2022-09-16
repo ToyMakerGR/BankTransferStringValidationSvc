@@ -1,7 +1,7 @@
 using System.Reflection;
-using Defender.MarkII.BeneficiaryNameValidationSvc.Infrastructure;
-using Defender.MarkII.BeneficiaryNameValidationSvc.Services;
-using Defender.MarkII.BeneficiaryNameValidationSvc.ValidationServices;
+using Defender.MarkII.BankTransferStringValidationSvc.Infrastructure;
+using Defender.MarkII.BankTransferStringValidationSvc.Services;
+using Defender.MarkII.BankTransferStringValidationSvc.ValidationServices;
 using Microsoft.ApplicationInsights.Extensibility;
 
 var builder = WebApplication.CreateBuilder(args);

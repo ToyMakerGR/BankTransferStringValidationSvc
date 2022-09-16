@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/BeneficiaryNameValidationSvc/BeneficiaryNameValidationSvc.csproj",
+                "${workspaceFolder}/src/BankTransferStringValidationSvc/BankTransferStringValidationSvc.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/BeneficiaryNameValidationSvc/BeneficiaryNameValidationSvc.csproj",
+                "${workspaceFolder}/src/BankTransferStringValidationSvc/BankTransferStringValidationSvc.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/src/BeneficiaryNameValidationSvc/BeneficiaryNameValidationSvc.csproj"
+                "${workspaceFolder}/src/BankTransferStringValidationSvc/BankTransferStringValidationSvc.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -44,14 +44,14 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "beneficiarynamevalidationsvc:dev",
+                "tag": "BankTransferStringValidationSvc:dev",
                 "target": "base",
-                "dockerfile": "${workspaceFolder}/src/BeneficiaryNameValidationSvc/Dockerfile",
+                "dockerfile": "${workspaceFolder}/src/BankTransferStringValidationSvc/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/src/BeneficiaryNameValidationSvc/BeneficiaryNameValidationSvc.csproj"
+                "appProject": "${workspaceFolder}/src/BankTransferStringValidationSvc/BankTransferStringValidationSvc.csproj"
             }
         },
         {
@@ -61,13 +61,13 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "beneficiarynamevalidationsvc:latest",
-                "dockerfile": "${workspaceFolder}/src/BeneficiaryNameValidationSvc/Dockerfile",
+                "tag": "BankTransferStringValidationSvc:latest",
+                "dockerfile": "${workspaceFolder}/src/BankTransferStringValidationSvc/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/src/BeneficiaryNameValidationSvc/BeneficiaryNameValidationSvc.csproj"
+                "appProject": "${workspaceFolder}/src/BankTransferStringValidationSvc/BankTransferStringValidationSvc.csproj"
             }
         },
         {
@@ -78,7 +78,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/src/BeneficiaryNameValidationSvc/BeneficiaryNameValidationSvc.csproj",
+                "appProject": "${workspaceFolder}/src/BankTransferStringValidationSvc/BankTransferStringValidationSvc.csproj",
                 "enableDebugging": true
             }
         },
@@ -90,7 +90,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/src/BeneficiaryNameValidationSvc/BeneficiaryNameValidationSvc.csproj"
+                "appProject": "${workspaceFolder}/src/BankTransferStringValidationSvc/BankTransferStringValidationSvc.csproj"
             }
         }
     ]
