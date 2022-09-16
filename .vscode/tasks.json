@@ -44,7 +44,7 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "BankTransferStringValidationSvc:dev",
+                "tag": "banktransferstringvalidationsvc:dev",
                 "target": "base",
                 "dockerfile": "${workspaceFolder}/src/BankTransferStringValidationSvc/Dockerfile",
                 "context": "${workspaceFolder}",
@@ -61,7 +61,7 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "BankTransferStringValidationSvc:latest",
+                "tag": "banktransferstringvalidationsvc:latest",
                 "dockerfile": "${workspaceFolder}/src/BankTransferStringValidationSvc/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
