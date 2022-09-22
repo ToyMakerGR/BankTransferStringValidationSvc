@@ -35,7 +35,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         resourceGroupName: ${{ env.RESOURCE_GROUP_NAME }}
-        template: ./Azure/main_staging.bicep
+        template: ./Azure/main.bicep
 
   build:
     runs-on: ubuntu-latest
