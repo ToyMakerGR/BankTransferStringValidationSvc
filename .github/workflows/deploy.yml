@@ -6,8 +6,12 @@ on:
       - deploy
 
 env:
-  RESOURCE_GROUP_NAME: defendermarkiitest
+  # alphanumeric string under 14 characters
+  RESOURCE_GROUP_NAME: defendermarkiitest2
+
+  # specify your preferred region
   REGION: westeurope
+
   SVC_DOCKER: src/BankTransferStringValidationSvc/Dockerfile
   SVC_IMAGE: banktransferstringvalidationsvc
 
@@ -16,26 +20,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
 
-    - name: Checkout to the branch
-      uses: actions/checkout@v3
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AzureSPN }}
 
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AzureSPN }}
+      - name: Create resource group
+        uses: azure/CLI@v1
+        with:
+          inlineScript: >
+            echo "Creating resource group in Azure"
+            echo "Executing 'az group create -l ${{ env.REGION }} -n ${{ env.RESOURCE_GROUP_NAME }}'"
 
-    - name: Create resource group
-      uses: azure/CLI@v1
-      with:
-        inlineScript: |
-          az group create -l ${{ env.REGION }} -n ${{ env.RESOURCE_GROUP_NAME }}
+            az group create -l ${{ env.REGION }} -n ${{ env.RESOURCE_GROUP_NAME }}
 
-    - name: Creating resources
-      uses: azure/arm-deploy@v1
-      with:
-        resourceGroupName: ${{ env.RESOURCE_GROUP_NAME }}
-        template: ./Azure/main.bicep
+      - name: Creating resources
+        uses: azure/CLI@v1
+        with:
+          inlineScript: >
+            echo "Creating resources"
+
+            az deployment group create --resource-group ${{ env.RESOURCE_GROUP_NAME }} --template-file '/github/workspace/Azure/main.bicep' --debug
 
   build:
     runs-on: ubuntu-latest
@@ -43,23 +51,26 @@ jobs:
 
     steps:
       - name: Checkout to the branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AzureSPN }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v1
 
-      - name: Log in to container registry
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io
-          username: ${{ secrets.SP_CLIENT_ID }}
-          password: ${{ secrets.SP_CLIENT_SECRET }}
+      - name: Login to ACR
+        run: |
+          set -euo pipefail
+          docker login ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io --username ${{ secrets.SP_CLIENT_ID }} --password ${{ secrets.SP_CLIENT_SECRET }}
 
       - name: Build the api image and push it to ACR
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/${{ env.SVC_IMAGE }}:${{ github.sha }}, ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/${{ env.SVC_IMAGE }}:latest
+          tags: ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/${{ env.SVC_IMAGE }}:${{ github.sha }}
           file: ${{ env.SVC_DOCKER }}
 
   deploy:
@@ -67,18 +78,34 @@ jobs:
     needs: build
 
     steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AzureSPN }}
 
+      - name: Installing Container Apps extension
+        uses: azure/CLI@v1
+        with:
+          inlineScript: >
+            az config set extension.use_dynamic_install=yes_without_prompt
+
+            az extension add --name containerapp --yes
+
+      - name: Login to ACR
+        run: |
+          set -euo pipefail
+          docker login ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io --username ${{ secrets.SP_CLIENT_ID }} --password ${{ secrets.SP_CLIENT_SECRET }}
+
       - name: Deploy Container Apps
         uses: azure/CLI@v1
         with:
-          inlineScript: |
-            az config set extension.use_dynamic_install=yes_without_prompt
-            az containerapp registry set -n ${{ env.SVC_IMAGE }} -g ${{ env.RESOURCE_GROUP_NAME }} --server ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io --username ${{ secrets.SP_CLIENT_ID }} --password ${{ secrets.SP_CLIENT_SECRET }}
-            az containerapp update -n ${{ env.SVC_IMAGE }} -g ${{ env.RESOURCE_GROUP_NAME }} -i ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/${{ env.SVC_IMAGE }}:latest
+          inlineScript: >
+            az containerapp registry set -n ${{ env.SVC_IMAGE }} -g ${{ env.RESOURCE_GROUP_NAME }} --server ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io
+
+            az containerapp update -n ${{ env.SVC_IMAGE }} -g ${{ env.RESOURCE_GROUP_NAME }} -i ${{ env.RESOURCE_GROUP_NAME }}acr.azurecr.io/${{ env.SVC_IMAGE }}:${{ github.sha }}
 
       - name: logout
         run: >
